@@ -1,7 +1,55 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import { OpenAIApi, Configuration } from 'openai'
+import { getAllJSDocTagsOfKind, setConstantValue } from 'typescript';
+import { useEffect, useState } from 'react';
+
+
+const configuration = new Configuration({
+  apiKey: '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',
+});
+
+const openai = new OpenAIApi(configuration);
 
 export default function Home() {
+  const [aiVersion, setAIVersion] = useState('');
+  const [review, setReview] = useState('');
+  const [updated, setUpdated] = useState(review);
+  const [instruction, setInstruction] = useState('edit this like siri would speak');
+  const [zkProof, setProof] = useState(''); 
+
+const generateAIVersion = async () => {
+  try {
+    const response = await openai.createEdit({
+      model: "text-davinci-edit-001",
+      input: review,
+      instruction: instruction
+    });  
+    const generatedResult = response.data.choices[0].text ? response.data.choices[0].text : "no feedback from ai"
+    console.log(generatedResult)
+    setAIVersion(generatedResult);
+  }
+  catch (error) {
+    console.log(error);
+  }
+}
+
+  const handleChange = (event: any) => {
+    setReview(event.target.value);
+  };
+  const handleInstructionChange = (event: any) => {
+    setInstruction(event.target.value);
+  };
+
+  // Maybe somehow save this for the user? idk this can be used though 
+  const handleClick = () => {
+    setUpdated(review);
+  };
+
+  const handleZkProofClick = () => {
+    setProof("this is the zero knowledge proof that you have completed this. your privacy is saved by this signature. use this to prove that you have done this generation to participate in the Quit Now community.");
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,31 +61,46 @@ export default function Home() {
       <main>
         <div className={styles.container}>
         <h1>Quest </h1>
-        <h2> Drop the tea on your employer, connect with your coworkers, anonymously, with the power of AI.</h2>
-        <p>
-            <h1>Steps</h1>
-            <h3>1. Share your story, honestly, angrily, however you want it. </h3>
-            <h3> 2. "Remix" your voice with AI. </h3>
-            <p>We retain the sentiment in your post, but "hide" your voice by remixing your words with the help of AI. That way, you can really hand it to them. Or, at least give a shoutout to a lovely company in an interesting way, like how Winnie the Pooh did it or something.
-              </p>
-              <p>
-                Examples of people you may be able to remix your text to sound like (depending on the wokeness of the AI):
-                <ol>
-                  <li>Oprah</li>
-                  <li>Tina from L Word</li>
-                  <li>Winnie the Pooh</li>
-                  <li>Santa Claus</li>
-                </ol>
-              </p>
-            3. Profit off your data, through <ul>
-            <li> mental health you gain when you let it go. </li>
-            <li> joy when you remember all the good times you shared with 
-            your coworkers that you liked to spend lunches and afternoons with. </li>
-            <li> maybe the inspiration to start a union? who knows? overthrow your boss? idk? </li>
-            <li> Be a part of our community, contribute, meet the team, or just chat about your thoughts
-             on your wildest working dreams, email us at <a href="mailto:team@quitnow.xyz">team@quitnow.xyz</a> </li>
-            </ul>
-          </p>
+        <h2> Get it off your chest anonymously, and remix your feelings with the power of AI.</h2>
+        <br/>
+        <div> 
+        <label> 1. First, write your thoughts here.
+        <textarea
+        id="message"
+        name="message"
+        onChange={handleChange}
+        value={review}
+        className={styles.reviewInput}
+      />
+      </label>
+      {/* <h2>My Review: {review}</h2> */}
+      <button onClick={handleClick}>Save Raw Review</button>
+      <h2>Saved review: {updated}</h2>
+      </div>
+
+      <br/>
+      <br/>
+      <label> 2. Next, type your instruction to AI here. 
+        <p> You may have to experiment with the right prompt to get something funny. </p>
+          <p> The default is "Edit this like Siri would speak" </p>
+        <p> You can also do "Edit this to be more positive." </p>
+        <input
+        type="text"
+        id="message"
+        name="message"
+        onChange={handleInstructionChange}
+        value={instruction}
+      />
+      </label>
+      <button onClick={generateAIVersion} className={styles.button}> Generate AI Version </button>
+
+      <h2>AI Version: {aiVersion}</h2>
+
+      
+      <button onClick={handleZkProofClick} className={styles.button}> Generate ZK Proof of Completion </button>
+      
+      <p> My Proof: {zkProof} </p>
+
         </div>
       </main>
 

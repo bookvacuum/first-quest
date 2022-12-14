@@ -1,5 +1,5 @@
 .container {
-  padding: 0 2rem;
+  padding: 0 1rem;
 }
 
 .main {
@@ -10,6 +10,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.reviewInput {
+  margin-top: 1rem;
+  width: 20rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
 }
 
 .footer {
