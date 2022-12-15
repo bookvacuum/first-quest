@@ -1,5 +1,5 @@
 .container {
-  padding: 0 1rem;
+  padding: 1rem 1rem;
   background-color: black;
   color: white;
 }
@@ -14,8 +14,14 @@
   align-items: center;
 }
 
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
 .button {
   height: 3rem;
+  width: fit-content;
   color: black;
   background-color: #AEFFAC;
   border: none;

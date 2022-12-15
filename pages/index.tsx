@@ -1,8 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { OpenAIApi, Configuration } from 'openai'
-import { getAllJSDocTagsOfKind, setConstantValue } from 'typescript';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 
 const configuration = new Configuration({
@@ -80,7 +79,7 @@ const generateAIVersion = async (input: string, setValue: ((arg0: string) => voi
 
       
         <br/>
-        <div> 
+        <div className={styles.flexColumn}> 
         <label> 1. Step one, write an honest review of your working conditions here.
         <textarea
         id="message"
@@ -97,6 +96,7 @@ const generateAIVersion = async (input: string, setValue: ((arg0: string) => voi
 
       <br/>
       <br/>
+      <div className={styles.flexColumn}>
       <label> 2. Step two, type your instruction to AI here. What do you want AI to do to your review? 
         <p> Try something like, "Edit this to add expletives"  </p>
         <p> The default if you don't try anything, is "Edit this like Siri would speak", which is ok, but you should try to add some expletives. xD </p>
@@ -111,7 +111,6 @@ const generateAIVersion = async (input: string, setValue: ((arg0: string) => voi
       </label>
       <br/>
       <button onClick={() => generateAIVersion(review, setAIVersion)} className={styles.button}> Generate AI Version </button>
-
       <h2>AI Version: This is the remixed version of your words.</h2>
       <textarea
         id="message"
@@ -135,10 +134,10 @@ const generateAIVersion = async (input: string, setValue: ((arg0: string) => voi
 
       <button onClick={() => generateAIVersion(aiVersion, setSecondAIVersion)} className={styles.button}> Generate Another AI Version </button>
 
+    </div>
 
     <h2> Generate a ZK Proof that you completed this activity to join this community</h2>
       <button onClick={handleZkProofClick} className={styles.button}> Generate ZK Proof of Completion </button>
-      
       <h3> Your Unique Proof of Contributing Individual (POCkI):  </h3>
       <h4>  {zkProof} </h4>
       <p>
