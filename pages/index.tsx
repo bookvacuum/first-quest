@@ -60,7 +60,6 @@ const generateAIVersion = async (input: string, setValue: ((arg0: string) => voi
         </Head>
       
       <main>
-        
           <h1 className={styles.title}>identityprotecc</h1> 
           <h2> filter your honest workplace review with AI</h2> 
         <h3>Tell us how you really feel about your job, your company, your role. </h3>
