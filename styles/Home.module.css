@@ -1,7 +1,7 @@
 .container {
   padding: 1rem 1rem;
   color: white;
-  background-image: url("/gradient.svg")
+  background-image: url("/gradient.svg");
 }
 
 .main {

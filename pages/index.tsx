@@ -60,7 +60,7 @@ const generateAIVersion = async (input: string, setValue: ((arg0: string) => voi
         </Head>
       
       <main>
-        <div className={styles.container}>
+        
           <h1>indentityprotecc</h1> 
           <h2> filter your honest workplace review with AI</h2> 
         <h3>Tell us how you really feel about your job, your company, your role. </h3>
@@ -147,7 +147,7 @@ const generateAIVersion = async (input: string, setValue: ((arg0: string) => voi
         This signature is your zero knowledge proof of joining the community by participating in this MVP.
         Save this in a convenient place, like an Apple note! You will be using this in the future to verify that you have done this activity, without revealing your identity or your exact words. :)
       </p>
-        </div>
+     
       </main>
 
       <footer className={styles.footer}>
