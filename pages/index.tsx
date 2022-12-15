@@ -61,7 +61,7 @@ const generateAIVersion = async (input: string, setValue: ((arg0: string) => voi
       
       <main>
         
-          <h1 className={styles.title}>indentityprotecc</h1> 
+          <h1 className={styles.title}>identityprotecc</h1> 
           <h2> filter your honest workplace review with AI</h2> 
         <h3>Tell us how you really feel about your job, your company, your role. </h3>
         <p> <b> We use the power of AI to remix your words, so you can retain anonymity but also keep the sentiment of your words.
