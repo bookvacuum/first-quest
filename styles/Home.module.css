@@ -1,7 +1,7 @@
 .container {
-  padding: 0 1rem;
-  background-color: black;
+  padding: 1rem 1rem;
   color: white;
+  background-image: url("/gradient.svg");
 }
 
 .main {
@@ -14,21 +14,71 @@
   align-items: center;
 }
 
+.title {
+  margin-left:3rem;
+  line-height: 1.15;
+  font-size: 98px;
+  color: white;
+  animation: pulse infinite; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.pulse {
+  animation-name: pulse;
+  animation-timing-function: ease-in-out;
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  height: 3rem;
+  width: fit-content;
+  color: black;
+  background-color: #AEFFAC;
+  border: none;
+  padding:0 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight:bold;
+}
 .reviewInput {
   margin-top: 1rem;
   width: 20rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 0.5rem;
+  height: 10rem;
 }
 
 .footer {
   display: flex;
   flex: 1;
+  flex-direction: column;
   padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
+}
+
+.link{
+  color: green;
 }
 
 .footer a {
@@ -50,12 +100,11 @@
 }
 
 .title {
-  margin: 0;
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: 1rem;
 }
 
-.title,
+
 .description {
   text-align: center;
 }
