@@ -1,7 +1,7 @@
 .container {
   padding: 1rem 1rem;
-  color: white;
-  background-image: url("/gradient.svg");
+  /* background-image: url("/gradient2.svg"); */
+    background-image: url("/gradient.svg");
 }
 
 .main {
@@ -12,6 +12,32 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.hover {
+  animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+
+
+
+.highlight{
+  font-family: "puffin-arcade-chrome", sans-serif;
+font-size: 150px;
+  font-weight: 900;
+  margin: auto;
+  color: #ee7dff;
+  text-align: center;
+ 
+
+}
+
+.center {
+  margin: auto;
+  width: 50%;
 }
 
 .title {
@@ -167,6 +193,8 @@
   margin-left: 0.5rem;
 }
 
+
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
@@ -186,3 +214,4 @@
     filter: invert(1);
   }
 }
+

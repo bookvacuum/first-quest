@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { OpenAIApi, Configuration } from "openai";
 import { useState } from "react";
+import Link from "next/link";
 
 const configuration = new Configuration({
   apiKey: "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",
@@ -60,10 +61,14 @@ export default function Home() {
         <title>Quest</title>
         <meta name="description" content="Quest" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="https://use.typekit.net/uov6xbj.css" />
       </Head>
 
       <main>
-        <h1 className={styles.title}>identityprotecc</h1>
+        <a href="/posts/first-post">
+          <h1 className={styles.title}>identityprotecc</h1>
+        </a>
+        <h1 className={`${styles.center} ${styles.highlight}`}>Quest</h1>
         <h2> filter your honest workplace review with AI</h2>
         <h3>
           Tell us how you really feel about your job, your company, your role.{" "}
