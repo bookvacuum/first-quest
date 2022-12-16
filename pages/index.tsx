@@ -212,16 +212,14 @@ export default function Home() {
         </h2>
         <button onClick={handleZkProofClick} className={styles.button}>
           {" "}
-          Generate ZK Proof of Completion{" "}
+          Verify Work Email to Receive ZkProof of Participation{" "}
         </button>
         <h3> Your Unique ID for Proof of Contributing Individual (POCkI): </h3>
         <h4> {zkProof} </h4>
         <p>
-          This signature is your zero knowledge proof of joining the community
-          by participating in this MVP. Save this in a convenient place, like an
-          Apple note! You will be using this in the future to verify that you
-          have done this activity, without revealing your identity or your exact
-          words. :)
+          After you verify your email with us, you will receive a code here that will be your ID.
+          We built a zkOracle here that will generate a signature that the data we received from you is verified, and that signature will be used by the smart contract that your ID came from our oracle.
+         This enables you to retain anonymity, because now you can just use the ID to be identified on our platform, and we have the ability to verify any post you make is from you because of the ID verified by our zkoracle. :)
         </p>
       </main>
 
