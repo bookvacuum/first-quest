@@ -1,7 +1,9 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { OpenAIApi, Configuration } from "openai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+//Import Smart contract 
+// import {validEmailOracle} from "./validEmailOracle"
 
 const configuration = new Configuration({
   apiKey: "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",
@@ -51,8 +53,16 @@ export default function Home() {
   };
 
   const handleZkProofClick = () => {
-    setProof("1234312423423");
+    setProof("fdhqwidui132h89rhjksffioqw");
   };
+
+  //Load up the smart contract validEmail Oracle 
+  // useEffect(() => {
+  //   (async () => {
+  //     const { ValidEmailOracle } = await import('validEmailOracle');
+  //   })();
+  // }, []);
+  
 
   return (
     <div className={styles.container}>
@@ -204,7 +214,7 @@ export default function Home() {
           {" "}
           Generate ZK Proof of Completion{" "}
         </button>
-        <h3> Your Unique Proof of Contributing Individual (POCkI): </h3>
+        <h3> Your Unique ID for Proof of Contributing Individual (POCkI): </h3>
         <h4> {zkProof} </h4>
         <p>
           This signature is your zero knowledge proof of joining the community
