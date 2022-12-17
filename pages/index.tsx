@@ -19,11 +19,13 @@ export default function Home() {
   const [updated, setUpdated] = useState(review);
   const [instruction, setInstruction] = useState("edit this to make it funny");
   const [zkProof, setProof] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const generateAIVersion = async (
     input: string,
     setValue: (arg0: string) => void
   ) => {
+    setLoading(true)
     try {
       const response = await openai.createEdit({
         model: "text-davinci-edit-001",
@@ -172,6 +174,7 @@ export default function Home() {
             {" "}
             Generate AI Version{" "}
           </button>
+          <p>{loading ? "Loading your AI version....... It may take 5 seconds......" : ""}</p>
           <h2>AI Version: This is the remixed version of your words.</h2>
           <textarea
             id="message"
