@@ -1,65 +1,65 @@
-import {
-    fetchAccount,
-    PublicKey,
-    PrivateKey,
-    Field,
-  } from 'snarkyjs'
+// import {
+//     fetchAccount,
+//     PublicKey,
+//     PrivateKey,
+//     Field,
+//   } from 'snarkyjs'
   
-  import type { ZkappWorkerRequest, ZkappWorkerReponse, WorkerFunctions } from './zkAppWorker';
+//   import type { ZkappWorkerRequest, ZkappWorkerReponse, WorkerFunctions } from './zkAppWorker';
   
-  export default class ZkappWorkerClient {
+//   export default class ZkappWorkerClient {
   
-    // ---------------------------------------------------------------------------------------
+//     // ---------------------------------------------------------------------------------------
   
-    loadSnarkyJS() {
-      return this._call('loadSnarkyJS', {});
-    }
+//     loadSnarkyJS() {
+//       return this._call('loadSnarkyJS', {});
+//     }
   
-    setActiveInstanceToBerkeley() {
-      return this._call('setActiveInstanceToBerkeley', {});
-    }
+//     setActiveInstanceToBerkeley() {
+//       return this._call('setActiveInstanceToBerkeley', {});
+//     }
   
-    loadContract() {
-      return this._call('loadContract', {});
-    }
+//     loadContract() {
+//       return this._call('loadContract', {});
+//     }
   
-    compileContract() {
-      return this._call('compileContract', {});
-    }
+//     compileContract() {
+//       return this._call('compileContract', {});
+//     }
   
-    // ---------------------------------------------------------------------------------------
+//     // ---------------------------------------------------------------------------------------
   
-    worker: Worker;
+//     worker: Worker;
   
-    promises: { [id: number]: { resolve: (res: any) => void, reject: (err: any) => void } };
+//     promises: { [id: number]: { resolve: (res: any) => void, reject: (err: any) => void } };
   
-    nextId: number;
+//     nextId: number;
   
-    constructor() {
-      this.worker = new Worker(new URL('./zkappWorker.ts', import.meta.url))
-      this.promises = {};
-      this.nextId = 0;
+//     constructor() {
+//       this.worker = new Worker(new URL('./zkappWorker.ts', import.meta.url))
+//       this.promises = {};
+//       this.nextId = 0;
   
-      this.worker.onmessage = (event: MessageEvent<ZkappWorkerReponse>) => {
-        this.promises[event.data.id].resolve(event.data.data);
-        delete this.promises[event.data.id];
-      };
-    }
+//       this.worker.onmessage = (event: MessageEvent<ZkappWorkerReponse>) => {
+//         this.promises[event.data.id].resolve(event.data.data);
+//         delete this.promises[event.data.id];
+//       };
+//     }
   
-    _call(fn: WorkerFunctions, args: any) {
-      return new Promise((resolve, reject) => {
-        this.promises[this.nextId] = { resolve, reject }
+//     _call(fn: WorkerFunctions, args: any) {
+//       return new Promise((resolve, reject) => {
+//         this.promises[this.nextId] = { resolve, reject }
   
-        const message: ZkappWorkerRequest = {
-          id: this.nextId,
-          fn,
-          args,
-        };
+//         const message: ZkappWorkerRequest = {
+//           id: this.nextId,
+//           fn,
+//           args,
+//         };
   
-        this.worker.postMessage(message);
+//         this.worker.postMessage(message);
   
-        this.nextId++;
-      });
-    }
-  }
-  
+//         this.nextId++;
+//       });
+//     }
+//   }
+  export {}
