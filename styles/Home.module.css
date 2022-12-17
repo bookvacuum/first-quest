@@ -1,7 +1,5 @@
 .container {
   padding: 1rem 1rem;
-  /* background-image: url("/gradient2.svg"); */
-    background-image: url("/gradient.svg");
 }
 
 .main {
@@ -14,6 +12,20 @@
   align-items: center;
 }
 
+@media (min-width: 768px) {
+  .main {
+   width: min-content;
+   margin: 0 auto;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: row; 
+  justify-content:right;
+  padding: 0 1rem;
+}
+
 .hover {
   animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
     transform: translate3d(0, 0, 0);
@@ -24,39 +36,41 @@
 
 
 
-.highlight{
+.highlight {
   font-family: "puffin-arcade-chrome", sans-serif;
 font-size: 150px;
   font-weight: 900;
   margin: auto;
   color: #ee7dff;
   text-align: center;
- 
-
 }
 
-.center {
-  margin: auto;
-  width: 50%;
+@media (max-width: 768px ) {
+  .highlight {
+    font-size: 5rem;
+  }
 }
 
-.title {
-  margin-left:3rem;
+.navItem {
   line-height: 1.15;
-  font-size: 98px;
-  color: white;
+  font-size: 1.5rem;
+  color: #ee7dff;
   animation: pulse infinite; /* referring directly to the animation's @keyframe declaration */
   animation-duration: 2s; /* don't forget to set a duration! */
 }
 
+
+
+.main { 
+  padding: 2rem;
+}
+
 @media (min-width: 768px) {
   .main {
-      position: absolute;
       top: 15rem;
       width: 900px;
       margin: 0 auto;
       height:fit-content;
-      background-color: #FFF3C8;
       border-radius: 97px;
       padding: 4rem;
   }
@@ -84,6 +98,7 @@ font-size: 150px;
 .flexColumn {
   display: flex;
   flex-direction: column;
+  align-items:center;
 }
 
 .button {
@@ -109,7 +124,6 @@ font-size: 150px;
 
 .footer {
   display: flex;
-  flex: 1;
   flex-direction: column;
   padding: 2rem 0;
   justify-content: center;
@@ -138,11 +152,6 @@ font-size: 150px;
   text-decoration: underline;
 }
 
-.title {
-  line-height: 1.15;
-  font-size: 1rem;
-}
-
 
 .description {
   text-align: center;
@@ -152,79 +161,5 @@ font-size: 150px;
   margin: 4rem 0;
   line-height: 1.5;
   font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-}
-
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-}
-
-.card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
-}
-
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
-}
-
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
-}
-
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
-
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
-}
-
-
-
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .card,
-  .footer {
-    border-color: #222;
-  }
-  .code {
-    background: #111;
-  }
-  .logo img {
-    filter: invert(1);
-  }
 }
 

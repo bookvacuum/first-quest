@@ -71,15 +71,17 @@ export default function Home() {
         <title>Quest</title>
         <meta name="description" content="Quest" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="https://use.typekit.net/uov6xbj.css" />
       </Head>
-
-      <main>
+      <div className={styles.nav}>
         <a href="/first-post">
-          <h1 className={styles.title}>identityprotecc</h1>
+          <h1 className={styles.navItem}>our story</h1>
         </a>
+        </div>
+
+      <main className={styles.main}>
+
         <h1 className={`${styles.center} ${styles.highlight}`}>Quest</h1>
-        <h2> filter your honest workplace review with AI</h2>
+        <h2> filter your honest workplace review with AI </h2>
         <h3>
           Tell us how you really feel about your job, your company, your role.{" "}
         </h3>
@@ -87,37 +89,12 @@ export default function Home() {
           {" "}
           <b>
             {" "}
-            We use the power of AI to remix your words, so you can retain
-            anonymity but also keep the sentiment of your words. Remix, edit,
-            and generate versions of your story until you're happy with it. Use
-            this story to share your true opinions with your coworkers on an
-            online community forum (coming soon!) to organize and demand better
-            working conditions.
+            We use zero knowledge proofs to verify your email first. Then we use the power of AI to remix your words, so you can retain
+            anonymity but also keep the sentiment of your words. 
+            Share your true opinions on an
+            online community forum (coming soon!) to organize and find your people.
           </b>{" "}
         </p>
-
-        {/* <h2> Background </h2>
-        <p>
-          {" "}
-          Workers are mobilizing in huge waves, see below on the latest on the
-          Harper Collins and the UC protests. There will always be a need to
-          communicate anonymously, honestly, and accurately with peers,
-          especially in times when collective action is needed for results.
-        </p>
-        <h4>
-          {" "}
-          Read more about the protests below (LATER! after you try this :D)
-        </h4>
-        <a href="https://www.theguardian.com/us-news/2022/nov/10/harpercollins-union-strike-publishing">
-          {" "}
-          Harper Collins Protest: HarperCollins union workers go on strike over
-          pay ‘for as long as it takes{" "}
-        </a>
-        <a href="https://www.latimes.com/california/story/2022-12-14/uc-strike-drags-into-5th-week-as-picketers-rally-at-ucla">
-          {" "}
-          University of California Protest: ‘Shut it down!’: Picketers disrupt
-          UC regents meeting as strike drags into 5th week{" "}
-        </a> */}
         <p>
           {" "}
           <b>
