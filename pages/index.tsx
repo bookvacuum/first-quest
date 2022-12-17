@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.css";
 import { OpenAIApi, Configuration } from "openai";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-//Import Smart contract
+//Import Smart contract 
 // import {validEmailOracle} from "./validEmailOracle"
 
 const configuration = new Configuration({
@@ -26,7 +26,7 @@ export default function Home() {
     input: string,
     setValue: (arg0: string) => void
   ) => {
-    setLoading(true);
+    setLoading(true)
     try {
       const response = await openai.createEdit({
         model: "text-davinci-edit-001",
@@ -59,7 +59,7 @@ export default function Home() {
     setProof("fdhqwidui132h89rhjksffioqw");
   };
 
-  //Load up the smart contract validEmail Oracle
+  //Load up the smart contract validEmail Oracle 
   // useEffect(() => {
   //   (async () => {
   //     const { ValidEmailOracle } = await import('validEmailOracle');
