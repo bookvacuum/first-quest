@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 // import {validEmailOracle} from "./validEmailOracle"
 
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
