@@ -1,8 +1,10 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { OpenAIApi, Configuration } from "openai";
-import { useState } from "react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+//Import Smart contract
+// import {validEmailOracle} from "./validEmailOracle"
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -18,11 +20,13 @@ export default function Home() {
   const [updated, setUpdated] = useState(review);
   const [instruction, setInstruction] = useState("edit this to make it funny");
   const [zkProof, setProof] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const generateAIVersion = async (
     input: string,
     setValue: (arg0: string) => void
   ) => {
+    setLoading(true);
     try {
       const response = await openai.createEdit({
         model: "text-davinci-edit-001",
@@ -52,8 +56,15 @@ export default function Home() {
   };
 
   const handleZkProofClick = () => {
-    setProof("1234312423423");
+    setProof("fdhqwidui132h89rhjksffioqw");
   };
+
+  //Load up the smart contract validEmail Oracle
+  // useEffect(() => {
+  //   (async () => {
+  //     const { ValidEmailOracle } = await import('validEmailOracle');
+  //   })();
+  // }, []);
 
   return (
     <div className={styles.container}>
@@ -65,7 +76,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <a href="/posts/first-post">
+        <a href="/first-post">
           <h1 className={styles.title}>identityprotecc</h1>
         </a>
         <h1 className={`${styles.center} ${styles.highlight}`}>Quest</h1>
@@ -86,7 +97,7 @@ export default function Home() {
           </b>{" "}
         </p>
 
-        <h2> Background </h2>
+        {/* <h2> Background </h2>
         <p>
           {" "}
           Workers are mobilizing in huge waves, see below on the latest on the
@@ -107,7 +118,7 @@ export default function Home() {
           {" "}
           University of California Protest: ‘Shut it down!’: Picketers disrupt
           UC regents meeting as strike drags into 5th week{" "}
-        </a>
+        </a> */}
         <p>
           {" "}
           <b>
@@ -167,6 +178,11 @@ export default function Home() {
             {" "}
             Generate AI Version{" "}
           </button>
+          <p>
+            {loading
+              ? "Loading your AI version....... It may take 5 seconds......"
+              : ""}
+          </p>
           <h2>AI Version: This is the remixed version of your words.</h2>
           <textarea
             id="message"
@@ -207,16 +223,19 @@ export default function Home() {
         </h2>
         <button onClick={handleZkProofClick} className={styles.button}>
           {" "}
-          Generate ZK Proof of Completion{" "}
+          Verify Work Email to Receive ZkProof of Participation{" "}
         </button>
-        <h3> Your Unique Proof of Contributing Individual (POCkI): </h3>
+        <h3> Your Unique ID for Proof of Contributing Individual (POCkI): </h3>
         <h4> {zkProof} </h4>
         <p>
-          This signature is your zero knowledge proof of joining the community
-          by participating in this MVP. Save this in a convenient place, like an
-          Apple note! You will be using this in the future to verify that you
-          have done this activity, without revealing your identity or your exact
-          words. :)
+          After you verify your email with us, you will receive a code here that
+          will be your ID. We built a zkOracle here that will generate a
+          signature that the data we received from you is verified, and that
+          signature will be used by the smart contract that your ID came from
+          our oracle. This enables you to retain anonymity, because now you can
+          just use the ID to be identified on our platform, and we have the
+          ability to verify any post you make is from you because of the ID
+          verified by our zkoracle. :)
         </p>
       </main>
 
