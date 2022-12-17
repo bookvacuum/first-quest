@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { OpenAIApi, Configuration } from "openai";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 //Import Smart contract 
 // import {validEmailOracle} from "./validEmailOracle"
 
@@ -56,7 +56,7 @@ export default function Home() {
   };
 
   const handleZkProofClick = () => {
-    setProof("fdhqwidui132h89rhjksffioqw");
+    setProof("fdhqwidui132h89rhjksh78hj09hihasdkffioqw");
   };
 
   //Load up the smart contract validEmail Oracle 
@@ -65,7 +65,6 @@ export default function Home() {
   //     const { ValidEmailOracle } = await import('validEmailOracle');
   //   })();
   // }, []);
-
   return (
     <div className={styles.container}>
       <Head>

@@ -49,6 +49,19 @@ font-size: 150px;
   animation-duration: 2s; /* don't forget to set a duration! */
 }
 
+@media (min-width: 768px) {
+  .main {
+      position: absolute;
+      top: 15rem;
+      width: 900px;
+      margin: 0 auto;
+      height:fit-content;
+      background-color: #FFF3C8;
+      border-radius: 97px;
+      padding: 4rem;
+  }
+}
+
 @keyframes pulse {
   from {
     transform: scale3d(1, 1, 1);
