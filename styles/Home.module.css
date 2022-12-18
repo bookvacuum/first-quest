@@ -1,5 +1,14 @@
+
+
+.wrapper {
+  background-color: blueviolet;
+  padding: 3px;
+  }
+
 .container {
+  background-color: black;
   padding: 1rem 1rem;
+  color: aliceblue;
 }
 
 .main {
@@ -155,6 +164,7 @@ font-size: 150px;
 
 .description {
   text-align: center;
+  font-family: sans-serif;
 }
 
 .description {
@@ -163,3 +173,64 @@ font-size: 150px;
   font-size: 1.5rem;
 }
 
+
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+
+
+.card {
+  top: 10px;
+  width: 98%;
+  margin: auto;
+  height: 980px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* display: flex; */
+  font-size: 1.5em;
+  color: pink;
+  cursor: pointer;
+  font-family:'Bungee Shade', cursive;
+  background-color: black;
+}
+
+/* .card:hover {
+  color: rgb(88 199 250 / 100%);
+  transition: color 1s;
+}
+
+.card:hover:before,
+.card:hover:after {
+  animation: none;
+  opacity: 0;
+} */
+
+
+.card::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(var(--rotate), #ff3cf5, #eefe00 43%, #24bffe);
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+
+  100% {
+    --rotate: 360deg;
+  }
+}

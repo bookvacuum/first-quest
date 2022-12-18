@@ -1,3 +1,6 @@
-export default function FirstPost() {
-  return <h1>First Post</h1>;
+import styles from "../styles/Home.module.css";
+
+function About() {
+  return <div className={styles.card}>hihi </div>;
 }
+export default About;
