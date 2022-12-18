@@ -1,9 +1,12 @@
 
-
-.wrapper {
-  background-color: blueviolet;
-  padding: 3px;
-  }
+.header {
+  position: absolute;
+  top: 40px;
+  letter-spacing: 3px; 
+  left: 0;
+  right: 0;
+  margin: auto
+}
 
 .container {
   background-color: black;
@@ -188,13 +191,13 @@ font-size: 150px;
   margin: auto;
   height: 980px;
   position: relative;
-  border-radius: 6px;
+  border-radius: 8px;
   justify-content: center;
   align-items: center;
   text-align: center;
   /* display: flex; */
   font-size: 1.5em;
-  color: pink;
+  color: whitesmoke;
   cursor: pointer;
   font-family:'Bungee Shade', cursive;
   background-color: black;
