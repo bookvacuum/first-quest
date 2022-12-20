@@ -196,10 +196,10 @@ font-size: 150px;
   align-items: center;
   text-align: center;
   /* display: flex; */
-  font-size: 1.5em;
-  color: whitesmoke;
+  font-size: 2.0em;
+  color: mintcream;
   cursor: pointer;
-  font-family:'Bungee Shade', cursive;
+  font-family:'puffin-arcade-tate', cursive;
   background-color: black;
 }
 
