@@ -1,16 +1,19 @@
 
 .header {
     display: inline-flex;
-    margin-left: 10%;
-    margin-right: 10%;
     color: mintcream;
 }
 
+.indent {
+    margin-left: 10%;
+    margin-right: 10%;
+    
+}
 .card {
     top: 10px;
     width: 98%;
     margin: auto;
-    height: 980px;
+    height: auto;
     position: relative;
     border-radius: 8px;
     justify-content: center;
@@ -64,11 +67,10 @@
     inherits: false;
 }
 
-.imgresize {
+.resize {
     width: 300px;
     height: auto;
     padding: 10px;
     margin-top: 100px;
     border-radius: 10px;
-    background-color: aliceblue;
 }

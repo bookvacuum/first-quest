@@ -3,7 +3,9 @@ import styles from "../styles/Home.module.css";
 import { OpenAIApi, Configuration } from "openai";
 import Link from "next/link";
 import { useState } from "react";
-//Import Smart contract 
+
+//Import Smart contract
+
 // import {validEmailOracle} from "./validEmailOracle"
 
 const configuration = new Configuration({
@@ -26,7 +28,7 @@ export default function Home() {
     input: string,
     setValue: (arg0: string) => void
   ) => {
-    setLoading(true)
+    setLoading(true);
     try {
       const response = await openai.createEdit({
         model: "text-davinci-edit-001",
@@ -59,7 +61,7 @@ export default function Home() {
     setProof("fdhqwidui132h89rhjksh78hj09hihasdkffioqw");
   };
 
-  //Load up the smart contract validEmail Oracle 
+  //Load up the smart contract validEmail Oracle
   // useEffect(() => {
   //   (async () => {
   //     const { ValidEmailOracle } = await import('validEmailOracle');
@@ -74,14 +76,17 @@ export default function Home() {
       </Head>
       <div className={styles.nav}>
         <a href="/first-post">
-          <h1 className={styles.navItem}>our story</h1>
+          <h1 className={styles.navItem}>learn more</h1>
         </a>
-        </div>
+      </div>
 
       <main className={styles.main}>
-
         <h1 className={`${styles.center} ${styles.highlight}`}>Quest</h1>
-        <h2> filter your honest workplace review with AI </h2>
+        <h2>
+          {" "}
+          Creating the largest collection of honest company reviews the web has
+          ever seen.{" "}
+        </h2>
         <h3>
           Tell us how you really feel about your job, your company, your role.{" "}
         </h3>
@@ -89,10 +94,11 @@ export default function Home() {
           {" "}
           <b>
             {" "}
-            We use zero knowledge proofs to verify your email first. Then we use the power of AI to remix your words, so you can retain
-            anonymity but also keep the sentiment of your words. 
-            Share your true opinions on an
-            online community forum (coming soon!) to organize and find your people.
+            We use zero knowledge proofs to verify your email first. Then we use
+            the power of AI to remix your words, so you can retain anonymity but
+            also keep the sentiment of your words. Share your true opinions on
+            an online community forum (coming soon!) to organize and find your
+            people.
           </b>{" "}
         </p>
         <p>
