@@ -25,7 +25,7 @@ export default function Home() {
     setLoading(true);
 
     console.log(process.env.NEXT_PUBLIC_OPENAI_API_KEY);
-
+    const inputWithQuotes = "\"" + input + "\""
     const requestOptions = {
       method: "POST",
       headers: {
@@ -34,12 +34,12 @@ export default function Home() {
       },
       body: JSON.stringify({
         model: "text-davinci-edit-001",
-        input: input,
+        input: inputWithQuotes,
         instruction: instruction,
       }),
     };
-
     try {
+      console.log("input" + inputWithQuotes)
       fetch("https://api.openai.com/v1/edits", requestOptions)
         .then((response) => response.json())
         .then((data) => {
