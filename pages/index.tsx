@@ -8,12 +8,6 @@ import { useState } from "react";
 
 // import {validEmailOracle} from "./validEmailOracle"
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
-const openai = new OpenAIApi(configuration);
-
 export default function Home() {
   const [aiVersion, setAIVersion] = useState("");
   const [secondAIVersion, setSecondAIVersion] = useState(aiVersion);
@@ -29,21 +23,57 @@ export default function Home() {
     setValue: (arg0: string) => void
   ) => {
     setLoading(true);
-    try {
-      const response = await openai.createEdit({
+
+    console.log(process.env.NEXT_PUBLIC_OPENAI_API_KEY);
+    const inputWithQuotes = "\"" + input + "\""
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + process.env.NEXT_PUBLIC_OPENAI_API_KEY,
+      },
+      body: JSON.stringify({
         model: "text-davinci-edit-001",
-        input: input,
+        input: inputWithQuotes,
         instruction: instruction,
-      });
-      const generatedResult = response.data.choices[0].text
-        ? response.data.choices[0].text
-        : "no feedback from ai";
-      console.log(generatedResult);
-      setValue(generatedResult);
+      }),
+    };
+    try {
+      console.log("input" + inputWithQuotes)
+      fetch("https://api.openai.com/v1/edits", requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          var result = data.choices[0].text;
+          setValue(result);
+        })
+        .catch((err) => {
+          console.log("Ran out of tokens for today! Try tomorrow!");
+        });
     } catch (error) {
       console.log(error);
     }
   };
+
+  // const generateAIVersion = async (
+  //   input: string,
+  //   setValue: (arg0: string) => void
+  // ) => {
+  //   setLoading(true);
+  //   try {
+  //     const response = await openai.createEdit({
+  //       model: "text-davinci-edit-001",
+  //       input: input,
+  //       instruction: instruction,
+  //     });
+  //     const generatedResult = response.data.choices[0].text
+  //       ? response.data.choices[0].text
+  //       : "no feedback from ai";
+  //     console.log(generatedResult);
+  //     setValue(generatedResult);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const handleChange = (event: any) => {
     setReview(event.target.value);
@@ -173,29 +203,6 @@ export default function Home() {
             value={aiVersion}
             className={styles.reviewInput}
           />
-
-          <br />
-          <br />
-          <label className={styles.flexColumn}>
-            {" "}
-            Don't like it? Try running the algorithm on the results. You can
-            also try a new prompt in step two.
-            <textarea
-              id="message"
-              name="message"
-              onChange={handleChange}
-              value={secondAIVersion}
-              className={styles.reviewInput}
-            />
-          </label>
-
-          <button
-            onClick={() => generateAIVersion(aiVersion, setSecondAIVersion)}
-            className={styles.button}
-          >
-            {" "}
-            Generate Another AI Version{" "}
-          </button>
         </div>
 
         <h2>
