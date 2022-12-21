@@ -1,5 +1,19 @@
+
+.header {
+  position: absolute;
+  top: 40px;
+  letter-spacing: 3px; 
+  left: 0;
+  right: 0;
+  margin: auto;
+  font-family: 'puffin-arcade-tate', cursive;
+  color: mintcream;
+}
+
 .container {
+  background-color: black;
   padding: 1rem 1rem;
+  color: aliceblue;
 }
 
 .main {
@@ -155,6 +169,7 @@ font-size: 150px;
 
 .description {
   text-align: center;
+  font-family: sans-serif;
 }
 
 .description {
@@ -162,4 +177,3 @@ font-size: 150px;
   line-height: 1.5;
   font-size: 1.5rem;
 }
-
