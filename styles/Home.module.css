@@ -36,8 +36,9 @@
 .nav {
   display: flex;
   flex-direction: row; 
-  justify-content:right;
+  justify-content:space-evenly;
   padding: 0 1rem;
+  width:100%;
 }
 
 .hover {

@@ -108,6 +108,9 @@ export default function Home() {
         <a href="/first-post">
           <h1 className={styles.navItem}>learn more</h1>
         </a>
+        <a href="/teapot">
+          <h1 className={styles.navItem}>teapot</h1>
+        </a>
       </div>
 
       <main className={styles.main}>
