@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import { OpenAIApi, Configuration } from "openai";
 import Link from "next/link";
 import { useState } from "react";
+import {generate} from "../generate.ts"
 
 //Import Smart contract
 
@@ -23,57 +24,21 @@ export default function Home() {
     setValue: (arg0: string) => void
   ) => {
     setLoading(true);
-
-    console.log(process.env.NEXT_PUBLIC_OPENAI_API_KEY);
-
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + process.env.NEXT_PUBLIC_OPENAI_API_KEY,
-      },
-      body: JSON.stringify({
-        model: "text-davinci-edit-001",
-        input: input,
-        instruction: instruction,
-      }),
-    };
-
     try {
-      fetch("https://api.openai.com/v1/edits", requestOptions)
-        .then((response) => response.json())
-        .then((data) => {
-          var result = data.choices[0].text;
-          setValue(result);
-        })
-        .catch((err) => {
-          console.log("Ran out of tokens for today! Try tomorrow!");
-        });
+      const response = await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ input: input, instruction: instruction}),
+      });
+      const data = await response.json();
+      console.log(data)
+      setValue(data.result)
     } catch (error) {
       console.log(error);
     }
   };
-
-  // const generateAIVersion = async (
-  //   input: string,
-  //   setValue: (arg0: string) => void
-  // ) => {
-  //   setLoading(true);
-  //   try {
-  //     const response = await openai.createEdit({
-  //       model: "text-davinci-edit-001",
-  //       input: input,
-  //       instruction: instruction,
-  //     });
-  //     const generatedResult = response.data.choices[0].text
-  //       ? response.data.choices[0].text
-  //       : "no feedback from ai";
-  //     console.log(generatedResult);
-  //     setValue(generatedResult);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   const handleChange = (event: any) => {
     setReview(event.target.value);
